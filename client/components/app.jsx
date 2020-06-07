@@ -23,6 +23,17 @@ class App extends React.Component {
         });
       })
       .catch(err => console.error('Fetch failed:', err));
+
+  }
+
+  getAverageGrade() {
+    const grades = this.state;
+    let addedStudentGrades = 0;
+    for (var i = 0; i < grades.length; i++) {
+      addedStudentGrades += grades[i].grade;
+    }
+    const newAverage = addedStudentGrades / grades.length;
+    return Math.ceil(newAverage);
   }
 
   render() {
