@@ -24,7 +24,23 @@ class App extends React.Component {
         });
       })
       .catch(err => console.error('Fetch failed:', err));
+  }
 
+  addGrade(newGrade) {
+    fetch('/api/grades', {
+      method: 'POST',
+      body: JSON.stringify(newGrade),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          grades: this.state.grades.concat(newGrade)
+        });
+      })
+      .catch(err => console.error('Fetch failed:', err));
   }
 
   getAverageGrade() {
