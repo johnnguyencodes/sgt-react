@@ -1,7 +1,9 @@
 import React from 'react';
 
-export default function Header(props) {
+function Header(props) {
   return (
-    <h1 className="mb-4">Student Grade Table</h1>
+    <h1 className="mb-4"> {props.text} </h1>
   );
 }
+
+export default Header;
