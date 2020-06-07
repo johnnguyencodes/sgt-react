@@ -1,6 +1,5 @@
 import React from 'react';
 
-// eslint-disable-next-line no-unused-vars
 function Grade(props) {
   const grade = props.grade;
   const idAttr = `grade${grade.id}`;
@@ -12,3 +11,29 @@ function Grade(props) {
     </tr>
   );
 }
+
+function GradeTable(props) {
+  return (
+    <table className="table table-striped">
+      <thead className="thead-light">
+        <tr>
+          <th className="align-middle">Name</th>
+          <th className="align-middle">Course</th>
+          <th className="align-middle">Grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          props.grades.map(grade => {
+            return (
+              <Grade
+                key={grade.id}
+                grade={grade} />
+            );
+          })}
+      </tbody>
+    </table>
+  );
+}
+
+export default GradeTable;
