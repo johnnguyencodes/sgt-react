@@ -8,15 +8,13 @@ class GradeForm extends React.Component {
       course: '',
       grade: ''
     };
-    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({
-      name: event.target.value,
-      course: event.target.value,
-      grade: event.target.value
-    });
+    const change = {};
+    change[event.target.name] = event.target.value;
+    this.setState(change);
   }
 
   handleSubmit(event) {
@@ -40,16 +38,16 @@ class GradeForm extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <h2>Add Grade</h2>
           <div className="name-container">
-            <i className="fas fa-user fa-2x"></i>
-            <input type="text" className="form-control border border-secondary rounded" id="name" name="name" placeholder="Name" />
+            <i className="fas fa-user fa-2x" htmlFor="name"></i>
+            <input type="name" className="form-control border border-secondary rounded" id="name" name="name" placeholder="Name" value={this.state.name} onChange={this.handleChange.bind(this)} />
           </div>
           <div className="course-container">
-            <i className="fas fa-th-list fa-2x"></i>
-            <input type="text" className="form-control border border-secondary" id="course" name="course" placeholder="Course" />
+            <i className="fas fa-th-list fa-2x" htmlFor="course"></i>
+            <input type="course" className="form-control border border-secondary" id="course" name="course" placeholder="Course" value={this.state.course} onChange={this.handleChange.bind(this)}/>
           </div>
           <div className="grade-container">
-            <i className="fas fa-graduation-cap fa-2x"></i>
-            <input type="number" className="form-control border border-secondary" id="grade" name="grade" placeholder="Grade" />
+            <i className="fas fa-graduation-cap fa-2x" htmlFor="grade"></i>
+            <input type="number" className="form-control border border-secondary" id="grade" name="grade" placeholder="Grade" value={this.state.grade} onChange={this.handleChange.bind(this)}/>
           </div>
           <div className="button-container no-gutters">
             <button type="submit" className="btn btn-success mr-3">Add</button>
