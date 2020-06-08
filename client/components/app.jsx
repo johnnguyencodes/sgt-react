@@ -44,6 +44,57 @@ class App extends React.Component {
       .catch(err => console.error('Fetch failed:', err));
   }
 
+  // deleteGrade(gradeId) {
+  //   const deletedGrade = {};
+  //   const grades = this.state.grades;
+  //   for (var i = 0; i < grades.length; i++) {
+  //     if (grades[i].id === gradeId) {
+  //       delete grades[i];
+  //     }
+  //   }
+  //   fetch(`api/grades/${gradeId}`, {
+  //     method: 'DELETE',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify(deletedGrade)
+  //   })
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       const gradesCopy = this.state.grades.slice();
+  //       var index = gradesCopy.map(x => {
+  //         return x.id;
+  //       }).indexOf(gradeId);
+  //       gradesCopy.splice(index, 1, deletedGrade);
+  //       this.setState(state => ({
+  //         grades: gradesCopy
+  //       })
+  //       );
+  //     });
+  // }
+
+  deleteGrade(gradeId) {
+    fetch(`api/grades/${gradeId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({})
+    })
+      .then(response => response.json())
+      .then(data => {
+        const gradesCopy = this.state.grades.slice();
+        var index = gradesCopy.map(x => {
+          return x.id;
+        }).indexOf(gradeId);
+        gradesCopy.splice(index, 1);
+        this.setState(state => ({
+          grades: gradesCopy
+        })
+        );
+      });
+  }
+
   getAverageGrade() {
     const grades = this.state.grades;
     let addedStudentGrades = 0;
