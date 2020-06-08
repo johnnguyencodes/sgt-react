@@ -36,19 +36,19 @@ class GradeForm extends React.Component {
 
   render() {
     return (
-      <div className="form-container">
+      <div className="form-container col-xl-3 col-xs-12 col-sm-10 col-lg-9 col-md-9">
         <form onSubmit={this.handleSubmit}>
           <h2>Add Grade</h2>
           <div className="name-container">
-            <i className="fas fa-user fa-lg border border-secondary rounded bg-light"></i>
+            <i className="fas fa-user fa-2x"></i>
             <input type="text" className="form-control border border-secondary rounded" id="name" name="name" placeholder="Name" />
           </div>
           <div className="course-container">
-            <i className="fas fa-th-list fa-lg border border-secondary rounded bg-light"></i>
+            <i className="fas fa-th-list fa-2x"></i>
             <input type="text" className="form-control border border-secondary" id="course" name="course" placeholder="Course" />
           </div>
           <div className="grade-container">
-            <i className="fas fa-user-graduate fa-lg border border-secondary rounded bg-light"></i>
+            <i className="fas fa-graduation-cap fa-2x"></i>
             <input type="number" className="form-control border border-secondary" id="grade" name="grade" placeholder="Grade" />
           </div>
           <div className="button-container no-gutters">
