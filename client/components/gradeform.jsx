@@ -9,6 +9,7 @@ class GradeForm extends React.Component {
       grade: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
   }
 
   handleChange(event) {
@@ -18,13 +19,22 @@ class GradeForm extends React.Component {
   }
 
   handleSubmit(event) {
-    event.preventDefault();
+    // event.preventDefault();
     const newGrade = {
       name: this.state.name,
       course: this.state.course,
-      grade: this.state.grade
+      grade: parseInt(this.state.grade)
     };
     this.props.onSubmit(newGrade);
+    this.setState({
+      name: '',
+      course: '',
+      grade: ''
+    });
+  }
+
+  handleCancel(event) {
+    event.preventDefault();
     this.setState({
       name: '',
       course: '',
@@ -35,7 +45,7 @@ class GradeForm extends React.Component {
   render() {
     return (
       <div className="form-container col-xl-3 col-xs-12 col-sm-10 col-lg-9 col-md-9">
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <h2>Add Grade</h2>
           <div className="name-container">
             <i className="fas fa-user fa-2x" htmlFor="name"></i>
@@ -50,8 +60,8 @@ class GradeForm extends React.Component {
             <input type="number" className="form-control border border-secondary" id="grade" name="grade" placeholder="Grade" value={this.state.grade} onChange={this.handleChange.bind(this)}/>
           </div>
           <div className="button-container no-gutters">
-            <button type="submit" className="btn btn-success mr-3">Add</button>
-            <button type="reset" className="btn btn-outline-dark">Cancel</button>
+            <button type="submit" onClick={this.handleSubmit} className="btn btn-success mr-3">Add</button>
+            <button type="reset" onClick={this.handleCancel} className="btn btn-outline-dark">Cancel</button>
           </div>
         </form>
       </div>

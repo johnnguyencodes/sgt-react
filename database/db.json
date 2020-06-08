@@ -19,9 +19,9 @@
       "grade": 100
     },
     {
-      "name": "John Nguyen",
-      "course": "JavaScript",
-      "grade": "95",
+      "name": "john",
+      "course": "nguyen",
+      "grade": 50,
       "id": 33
     }
   ]

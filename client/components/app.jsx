@@ -50,8 +50,14 @@ class App extends React.Component {
     for (var i = 0; i < grades.length; i++) {
       addedStudentGrades += grades[i].grade;
     }
-    const newAverage = Math.ceil(addedStudentGrades / grades.length);
-    return newAverage;
+    let newAverage = null;
+    if (!(grades.length)) {
+      newAverage = '--';
+      return newAverage;
+    } else {
+      newAverage = Math.ceil(addedStudentGrades / grades.length);
+      return newAverage;
+    }
   }
 
   render() {
