@@ -10,6 +10,7 @@ class App extends React.Component {
       grades: []
     };
     this.getAverageGrade = this.getAverageGrade.bind(this);
+    this.deleteGrade = this.deleteGrade.bind(this);
   }
 
   componentDidMount() {
@@ -43,35 +44,6 @@ class App extends React.Component {
       })
       .catch(err => console.error('Fetch failed:', err));
   }
-
-  // deleteGrade(gradeId) {
-  //   const deletedGrade = {};
-  //   const grades = this.state.grades;
-  //   for (var i = 0; i < grades.length; i++) {
-  //     if (grades[i].id === gradeId) {
-  //       delete grades[i];
-  //     }
-  //   }
-  //   fetch(`api/grades/${gradeId}`, {
-  //     method: 'DELETE',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(deletedGrade)
-  //   })
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       const gradesCopy = this.state.grades.slice();
-  //       var index = gradesCopy.map(x => {
-  //         return x.id;
-  //       }).indexOf(gradeId);
-  //       gradesCopy.splice(index, 1, deletedGrade);
-  //       this.setState(state => ({
-  //         grades: gradesCopy
-  //       })
-  //       );
-  //     });
-  // }
 
   deleteGrade(gradeId) {
     fetch(`api/grades/${gradeId}`, {
@@ -115,9 +87,8 @@ class App extends React.Component {
       <div>
         <Header text="Student Grade Table" averageGrade={this.getAverageGrade()} />
         <div className="row">
-          <GradeTable grades={this.state.grades} onClick={this.deleteGrade} />
+          <GradeTable grades={this.state.grades} deleteGrade={this.deleteGrade} />
           <GradeForm onSubmit={this.addGrade}/>
-
         </div>
       </div>
     );

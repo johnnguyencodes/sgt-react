@@ -3,13 +3,12 @@ import React from 'react';
 function Grade(props) {
   const grade = props.grade;
   const idAttr = `grade${grade.id}`;
-
   return (
     <tr id={idAttr}>
       <td>{props.grade.name}</td>
       <td>{props.grade.course}</td>
       <td>{props.grade.grade}</td>
-      <td><button onClick={props.deleteGrade(grade.id)} className="btn btn-danger">DELETE</button></td>
+      <td><button onClick={() => props.deleteGrade(grade.id)} className="btn btn-danger">DELETE</button></td>
     </tr>
   );
 }
@@ -32,12 +31,12 @@ function GradeTable(props) {
               return (
                 <Grade
                   key={grade.id}
-                  grade={grade} />
+                  grade={grade}
+                  deleteGrade={props.deleteGrade} />
               );
             })}
         </tbody>
       </table>
-      {/* <p id="grades-notifier">No Grades Recorded</p> */}
     </div>
   );
 }
