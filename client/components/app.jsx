@@ -78,8 +78,7 @@ class App extends React.Component {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({})
+      }
     })
       .then(response => response.json())
       .then(data => {
@@ -116,8 +115,9 @@ class App extends React.Component {
       <div>
         <Header text="Student Grade Table" averageGrade={this.getAverageGrade()} />
         <div className="row">
-          <GradeTable grades={this.state.grades} />
-          <GradeForm onSubmit={this.addGrade} />
+          <GradeTable grades={this.state.grades} onSubmit={this.deleteGrade} />
+          <GradeForm onSubmit={this.addGrade}/>
+
         </div>
       </div>
     );
